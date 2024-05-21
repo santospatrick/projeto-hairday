@@ -1,4 +1,8 @@
 {
+  "name": "projeto-hairday",
+  "description": "Projeto para o curso de MBA Rocketseat Full Stack",
+  "author": "Patrick Santos",
+  "private": true,
   "scripts": {
     "server": "json-server --watch db.json --port 3333"
   },
