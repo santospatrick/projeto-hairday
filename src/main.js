@@ -9,3 +9,4 @@ import "./styles/schedule.css";
 
 // JS
 import './modules/form/submit'
+import './modules/page-load'
