@@ -4,15 +4,21 @@ import { hoursClick } from "./hours-click";
 
 const list = document.getElementById('hours')
 
-export function hoursLoad({ date }) {
+export function hoursLoad({ date, dailySchedules }) {
     list.innerHTML = ''
+
+    const unavailableHours = dailySchedules.map((schedule) => dayjs(schedule.when).format('HH:00'))
+
     const opening = openingHours.map((openingHour) => {
         const [scheduleHour] = openingHour.split(":")
 
-        const isHourPast = dayjs(date).add(scheduleHour, 'hour').isAfter(dayjs())
+        const isHourPast = dayjs(date).add(scheduleHour, 'hour').isBefore(dayjs())
+
+        const available = !unavailableHours.includes(openingHour) && !isHourPast
+
         return {
             hour: openingHour,
-            available: isHourPast
+            available
         }
     })
     
